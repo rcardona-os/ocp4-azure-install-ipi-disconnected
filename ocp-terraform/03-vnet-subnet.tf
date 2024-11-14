@@ -14,26 +14,19 @@ resource "azurerm_subnet" "registry_subnet" {
   address_prefixes     = ["10.0.0.0/24"]
 }
 
-# Private subnet in availability zone 0
-resource "azurerm_subnet" "az0_subnet" {
-  name                 = "az0_subnet"
+# Private subnet masters
+resource "azurerm_subnet" "master_subnet" {
+  name                 = "master_subnet"
   resource_group_name  = azurerm_resource_group.ocp-private-rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
 
-# Private subnet in availability zone 1
-resource "azurerm_subnet" "az1_subnet" {
-  name                 = "az1_subnet"
+# Private subnet workers
+resource "azurerm_subnet" "worker_subnet" {
+  name                 = "worker_subnet"
   resource_group_name  = azurerm_resource_group.ocp-private-rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes     = ["10.0.1.0/24"]
 }
 
-# Private subnet in availability zone 2
-resource "azurerm_subnet" "az2_subnet" {
-  name                 = "az2_subnet"
-  resource_group_name  = azurerm_resource_group.ocp-private-rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.3.0/24"] 
-}
