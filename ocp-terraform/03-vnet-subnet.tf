@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 # Public subnet to host registry
-resource "azurerm_subnet" "registry_subnet" {
+resource "azurerm_subnet" "public_subnet" {
   name                 = var.public_subnet_name
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
