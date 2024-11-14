@@ -37,9 +37,6 @@ Port: 10250-10259
 Protocol: tcp
 Port: 30000-32767
 
-
-
-
 Protocol: udp
 Port: 4789
 
