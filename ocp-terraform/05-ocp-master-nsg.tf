@@ -3,6 +3,7 @@ resource "azurerm_network_security_group" "master_nsg" {
   name                = "master_nsg"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  depends_on          = [azurerm_virtual_network.vnet]  # Explicit dependency on VNet
 
   # ICMP rule
   security_rule {

@@ -6,6 +6,7 @@ resource "azurerm_public_ip" "registry_public_ip" {
   allocation_method   = "Static"  # Use "Static" instead of "Dynamic" for Standard SKU
   sku                 = "Standard"  # Specify Standard SKU if needed
   domain_name_label   = "private-registry"  # Set a unique DNS label here
+  depends_on          = [azurerm_virtual_network.vnet]  # Explicit dependency on VNet
 }
 
 # Define a Network Interface
