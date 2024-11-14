@@ -1,8 +1,8 @@
 # Define the Network Security Group (NSG) for internet access
 resource "azurerm_network_security_group" "public_nsg" {
   name                = "public_nsg"
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 
   # Allow SSH
   security_rule {

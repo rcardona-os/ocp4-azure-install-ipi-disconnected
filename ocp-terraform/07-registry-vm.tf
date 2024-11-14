@@ -1,8 +1,8 @@
 # Create a Public IP for Internet Access
 resource "azurerm_public_ip" "registry_public_ip" {
   name                = "registry-public-ip"
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"  # Use "Static" instead of "Dynamic" for Standard SKU
   sku                 = "Standard"  # Specify Standard SKU if needed
   domain_name_label   = "private-registry"  # Set a unique DNS label here
@@ -37,7 +37,7 @@ resource "azurerm_linux_virtual_machine" "registry" {
   admin_username      = "ocpuser"
 
   network_interface_ids = [
-    azurerm_network_interface.private_vm_nic.id
+    azurerm_network_interface.registry_nic.id
   ]
 
   admin_ssh_key {
