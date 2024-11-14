@@ -5,7 +5,7 @@ resource "azurerm_public_ip" "registry_public_ip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"  # Use "Static" instead of "Dynamic" for Standard SKU
   sku                 = "Standard"  # Specify Standard SKU if needed
-  domain_name_label   = "registry-ocp"  # Set a unique DNS label here
+  domain_name_label   = "private-registry"  # Set a unique DNS label here
 }
 
 # Define a Network Interface
@@ -25,14 +25,14 @@ resource "azurerm_network_interface" "registry_nic" {
 # Associate the Network Security Group with the Network Interface
 resource "azurerm_network_interface_security_group_association" "nic_nsg_association" {
   network_interface_id      = azurerm_network_interface.registry_nic.id
-  network_security_group_id = ocp-worker-nsg.vm_nsg.id
+  network_security_group_id =  azurerm_network_security_group.public_nsg.id
 }
 
 # Define the Virtual Machine (VM)
-resource "azurerm_linux_virtual_machine" "private_vm" {
-  name                = "private-ocp-vm"
-  location            = azurerm_resource_group.private_rg.location
-  resource_group_name = azurerm_resource_group.private_rg.name
+resource "azurerm_linux_virtual_machine" "registry" {
+  name                = "registry"
+  location            = var.location
+  resource_group_name = var.resource_group_name
   size                = "Standard_B2as_v2"  # 2 vCPUs, 8 GB RAM
   admin_username      = "ocpuser"
 
@@ -42,7 +42,7 @@ resource "azurerm_linux_virtual_machine" "private_vm" {
 
   admin_ssh_key {
     username   = "ocpuser"
-    public_key = file("~/.ssh/id_rsa.pub")  # Path to your SSH public key
+    public_key = file(var.ssh_key_path)  # Path to your SSH public key
   }
 
   os_disk {
@@ -58,6 +58,6 @@ resource "azurerm_linux_virtual_machine" "private_vm" {
     version   = "latest"
   }
 
-  computer_name  = "private-ocp-vm"
+  computer_name  = "registry"
   disable_password_authentication = true
 }

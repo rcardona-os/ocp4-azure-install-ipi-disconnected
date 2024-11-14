@@ -1,5 +1,5 @@
 # Define the Network Security Group
-resource "azurerm_network_security_group" "master_nsg" {
+resource "azurerm_network_security_group" "worker_nsg" {
   name                = "worker_nsg"
   location            = var.location
   resource_group_name = var.resource_group_name
