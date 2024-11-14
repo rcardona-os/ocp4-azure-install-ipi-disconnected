@@ -1,12 +1,6 @@
-# Define the Resource Group
-resource "azurerm_resource_group" "private_rg" {
-  name     = "private-rg"
-  location = "East US"
-}
-
 # Define the Network Security Group (NSG) for internet access
 resource "azurerm_network_security_group" "vm_nsg" {
-  name                = "private-vm-nsg"
+  name                = "ocp-private-registry-nsg"
   location            = azurerm_resource_group.private_rg.location
   resource_group_name = azurerm_resource_group.private_rg.name
 
