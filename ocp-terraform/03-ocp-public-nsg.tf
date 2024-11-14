@@ -1,8 +1,8 @@
 # Define the Network Security Group (NSG) for internet access
-resource "azurerm_network_security_group" "vm_nsg" {
-  name                = "ocp-private-registry-nsg"
-  location            = azurerm_resource_group.private_rg.location
-  resource_group_name = azurerm_resource_group.private_rg.name
+resource "azurerm_network_security_group" "ocp-public-nsg" {
+  name                = "ocp-public-nsg"
+  location            = azurerm_resource_group.ocp-private-rg.location
+  resource_group_name = azurerm_resource_group.ocp-private-rg.name
 
   # Allow SSH
   security_rule {
@@ -42,32 +42,6 @@ resource "azurerm_network_security_group" "vm_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-
-  # # Allow Inbound on Port 7443
-  # security_rule {
-  #   name                       = "AllowInbound7443"
-  #   priority                   = 1004
-  #   direction                  = "Inbound"
-  #   access                     = "Allow"
-  #   protocol                   = "Tcp"
-  #   source_port_range          = "*"
-  #   destination_port_range     = "7443"
-  #   source_address_prefix      = "*"
-  #   destination_address_prefix = "*"
-  # }
-
-  # # Allow Inbound on Port 8443
-  # security_rule {
-  #   name                       = "AllowInbound8080"
-  #   priority                   = 1005
-  #   direction                  = "Inbound"
-  #   access                     = "Allow"
-  #   protocol                   = "Tcp"
-  #   source_port_range          = "*"
-  #   destination_port_range     = "8080"
-  #   source_address_prefix      = "*"
-  #   destination_address_prefix = "*"
-  # }
 
   # Allow Inbound on Port 8443
   security_rule {
