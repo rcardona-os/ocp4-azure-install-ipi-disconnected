@@ -1,6 +1,6 @@
 # Define the Network Security Group (NSG) for internet access
-resource "azurerm_network_security_group" "ocp-public-nsg" {
-  name                = "ocp-public-nsg"
+resource "azurerm_network_security_group" "ocp-nsg" {
+  name                = "ocp-nsg"
   location            = azurerm_resource_group.ocp-private-rg.location
   resource_group_name = azurerm_resource_group.ocp-private-rg.name
 
