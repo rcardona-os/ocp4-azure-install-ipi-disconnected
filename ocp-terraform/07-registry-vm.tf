@@ -1,31 +1,31 @@
 # Create a Public IP for Internet Access
-resource "azurerm_public_ip" "private_vm_public_ip" {
-  name                = "private-vm-public-ip"
-  location            = azurerm_resource_group.private_rg.location
-  resource_group_name = azurerm_resource_group.private_rg.name
+resource "azurerm_public_ip" "registry_public_ip" {
+  name                = "registry-public-ip"
+  location            = var.location
+  resource_group_name = var.resource_group_name
   allocation_method   = "Static"  # Use "Static" instead of "Dynamic" for Standard SKU
   sku                 = "Standard"  # Specify Standard SKU if needed
   domain_name_label   = "registry-ocp"  # Set a unique DNS label here
 }
 
 # Define a Network Interface
-resource "azurerm_network_interface" "private_vm_nic" {
-  name                = "private-vm-nic"
-  location            = azurerm_resource_group.private_rg.location
-  resource_group_name = azurerm_resource_group.private_rg.name
+resource "azurerm_network_interface" "registry_nic" {
+  name                = "registry-nic"
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.registry_subnet.id
+    subnet_id                     = azurerm_subnet.public_subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.private_vm_public_ip.id
+    public_ip_address_id          = azurerm_public_ip.registry_public_ip.id
   }
 }
 
 # Associate the Network Security Group with the Network Interface
 resource "azurerm_network_interface_security_group_association" "nic_nsg_association" {
-  network_interface_id      = azurerm_network_interface.private_vm_nic.id
-  network_security_group_id = azurerm_network_security_group.vm_nsg.id
+  network_interface_id      = azurerm_network_interface.registry_nic.id
+  network_security_group_id = ocp-worker-nsg.vm_nsg.id
 }
 
 # Define the Virtual Machine (VM)
