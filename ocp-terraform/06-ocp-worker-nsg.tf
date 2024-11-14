@@ -1,8 +1,8 @@
 # Define the Network Security Group (NSG) for internet access
-resource "azurerm_network_security_group" "ocp-nsg" {
-  name                = "ocp-nsg"
-  location            = azurerm_resource_group.ocp-private-rg.location
-  resource_group_name = azurerm_resource_group.ocp-private-rg.name
+resource "azurerm_network_security_group" "worker_nsg" {
+  name                = "worker_nsg"
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
   # Allow SSH
   security_rule {
