@@ -10,3 +10,13 @@ variable "subscription_id" {
   description = "The subscription to use for installation"
   type        = string
 }
+
+variable "resource_group_name" {
+  description = "The subscription to use for installation"
+  type        = string
+}
+
+variable "vnet_cidr" {
+  description = "The subscription to use for installation"
+  type        = string
+}

@@ -1,9 +1,9 @@
 # Define VNet and Subnets
 resource "azurerm_virtual_network" "vnet" {
   name                = "ocp-private-vnet"
-  location            = azurerm_resource_group.ocp-private-rg.location
-  resource_group_name = azurerm_resource_group.ocp-private-rg.name
-  address_space       = ["10.0.0.0/16"]
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  address_space       = var.vnet_cidr
 }
 
 # Public subnet to host registry
