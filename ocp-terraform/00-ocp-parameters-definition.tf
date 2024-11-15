@@ -16,6 +16,11 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "ocp_private_dns_zone" {
+  description = "The subscription to use for installation"
+  type        = string
+}
+
 variable "vnet_cidr" {
   description = "The CIDR block for the Virtual Network"
   type        = string

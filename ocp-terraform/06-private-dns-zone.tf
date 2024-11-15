@@ -1,6 +1,6 @@
 # Create the Private DNS Zone
 resource "azurerm_private_dns_zone" "ocp_private_dns_zone" {
-  name                = "ocp-private.com"
+  name                = var.private_domain
   resource_group_name = azurerm_resource_group.rg.name
 }
 

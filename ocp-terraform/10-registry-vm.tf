@@ -5,8 +5,17 @@ resource "azurerm_public_ip" "registry_public_ip" {
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"  # Use "Static" instead of "Dynamic" for Standard SKU
   sku                 = "Standard"  # Specify Standard SKU if needed
-  domain_name_label   = "private-registry"  # Set a unique DNS label here
+  #domain_name_label   = "private-registry"  # Set a unique DNS label here
   depends_on          = [azurerm_virtual_network.vnet]  # Explicit dependency on VNet
+}
+
+# Create a DNS A record in the private DNS zone
+resource "azurerm_private_dns_a_record" "registry_a_record" {
+  name                = "registry"  # This will create "registry.ocp-private.com"
+  zone_name           = azurerm_private_dns_zone.ocp_private_dns_zone.name
+  resource_group_name = azurerm_resource_group.rg.name
+  ttl                 = 300  # Time to live in seconds
+  records             = [azurerm_network_interface.registry_nic.private_ip_address]  # Private IP of the NIC
 }
 
 # Define a Network Interface
