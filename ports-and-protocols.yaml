@@ -1,0 +1,59 @@
+Protocol: icmp
+Port: 0
+         
+Protocol: tcp
+Port: 22
+
+Protocol: tcp
+Port: 53
+
+Protocol: udp
+Port: 53
+
+Protocol: tcp
+Port: 80
+
+Protocol: tcp
+Port: 443
+
+Protocol: tcp
+Port: 19531
+
+Protocol: tcp
+Port: 6443
+
+Protocol: tcp
+Port: 22623
+
+Protocol: tcp
+Port: 1936
+
+Protocol: tcp
+Port: 9000-9999
+
+Protocol: tcp
+Port: 10250-10259
+
+Protocol: tcp
+Port: 30000-32767
+
+Protocol: udp
+Port: 4789
+
+Protocol: udp
+Port: 6081
+
+Protocol: udp
+Port: 9000-9999
+
+Protocol: udp
+Port: 500
+
+Protocol: udp
+Port: 4500
+
+Protocol: udp
+Port: 123
+        
+Protocol: udp
+Port: 30000-32767
