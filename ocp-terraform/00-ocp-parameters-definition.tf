@@ -16,7 +16,8 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "ocp_private_dns_zone" {
+variable "private_domain" {
+  default     = "ocp-private.com"
   description = "The subscription to use for installation"
   type        = string
 }
