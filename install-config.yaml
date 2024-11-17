@@ -27,7 +27,7 @@ compute:
       - "3"
   replicas: 3
 metadata:
-  name: d1
+  name: f1
 networking:
   clusterNetwork:
   - cidr: 10.128.0.0/14
@@ -43,7 +43,7 @@ platform:
     region: eastus
     resourceGroupName: ocp_installer_rg
     networkResourceGroupName: existing_infra_rg
-    virtualNetwork: ocp_vnet
+    virtualNetwork: existing_infra_vnet
     controlPlaneSubnet: master_subnet
     computeSubnet: worker_subnet
     outboundType: UserDefinedRouting
@@ -54,28 +54,28 @@ sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5g7QLA35HRSs3oYUbQLXnNikMbYb97j4
 publish: Internal
 additionalTrustBundle: |
   -----BEGIN CERTIFICATE-----
-  MIID7jCCAtagAwIBAgIUHGH65KU4XUuX+BD7C2s2VNJSrmkwDQYJKoZIhvcNAQEL
+  MIID7jCCAtagAwIBAgIUESS1PIasH1C/2TIqPwy6aAwZnfcwDQYJKoZIhvcNAQEL
   BQAwcjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAlZBMREwDwYDVQQHDAhOZXcgWW9y
   azENMAsGA1UECgwEUXVheTERMA8GA1UECwwIRGl2aXNpb24xITAfBgNVBAMMGHJl
-  Z2lzdHJ5Lm9jcC1wcml2YXRlLmNvbTAeFw0yNDExMTUxNzIyMjlaFw0yNzA5MDUx
-  NzIyMjlaMHIxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJWQTERMA8GA1UEBwwITmV3
+  Z2lzdHJ5Lm9jcC1wcml2YXRlLmNvbTAeFw0yNDExMTcwMjUyMjNaFw0yNzA5MDcw
+  MjUyMjNaMHIxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJWQTERMA8GA1UEBwwITmV3
   IFlvcmsxDTALBgNVBAoMBFF1YXkxETAPBgNVBAsMCERpdmlzaW9uMSEwHwYDVQQD
   DBhyZWdpc3RyeS5vY3AtcHJpdmF0ZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IB
-  DwAwggEKAoIBAQDnb99vZ8s57fXguj3zgjRCc8RLneyoTBSfwsCGOrnjxxMftciM
-  iWgJ/9vgejYkDZOl4znk0aTfkEsEeIpNktGaexyY8Le7KY2KuLEBzqKWJhAwowKI
-  qtpQTPzYQn/OzPxPrWHUajheYU8GMvTfW0rR6y/1c2rtQ3dR23CGhali1FZQIDaj
-  uiacA4rfSmxHVaRjqVXIofpdCgsrZuTx/s7ufZ0vEFxcjPx995jJewwr7fxfPch7
-  cnQJCWzk2+xhm5QkedIOW10A+xmoUCngHUc2t3mOyrCzaqVoQvc5/1wMZaUelqLL
-  iiVF4JiSkjVVLfbKFHwwg0wTjhxsyqJmnJ3lAgMBAAGjfDB6MAsGA1UdDwQEAwIC
+  DwAwggEKAoIBAQCa2JgSd9no5n2l9Ac9rPQE6WWhNTNfNkzGBDKhILjSGIUCSBb8
+  RvlpjLlGT28y2FKu4qxWciDnK9/DNi6otNLEniZGEn4VCYUlmxeT9/qBn5wPNBex
+  4l5iTw7/UyzqoZIXdevRtTAEqS9TCDY0DSKTubOuOFeqk4v6CD/mkSI2T0SAf/e2
+  RJGRz8tsK/xCzq/amjidTJNQ4HFF5GTuY7kDsWxWBb0RgdRqAoTbdvP8O0Lw/Fg8
+  6W5dy7p/aZV5UIeWlmrW5MzlBMx5HBx900HNaShkyvULxAa5bliZhovT92s9js9L
+  vfQMPs2QK51fGsN1ZtfxDlQim8bgc+etljFbAgMBAAGjfDB6MAsGA1UdDwQEAwIC
   5DATBgNVHSUEDDAKBggrBgEFBQcDATAjBgNVHREEHDAaghhyZWdpc3RyeS5vY3At
-  cHJpdmF0ZS5jb20wEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQUsQ3r0zKq
-  VOUYxqTtL08gihs/i74wDQYJKoZIhvcNAQELBQADggEBAGqPerzL0i9w2re7b7KM
-  VAvDeC+ytl3s5ZtohRfWJHgAtnlubsK9Os9nzNaS2E3mtHFPIcnhLy6gQ/ErixAP
-  xQPfD1Ht1Y0G2sowhHretnKE49ovEFMr5AiVeyxxh/ucu1twhh+PLoMCJMPRlmxa
-  4zqNCWMCgMNa0eqAXns/1s/i45Sc2ZayKuSuu4wJU37mSKBnDd5O387ZgjuOTbBL
-  q1M6MLVAsPaKbd/3nRj9pRCFnvIKCk8vXHMevulIxDeT0lVXrHgTqtBSmrLvOPr0
-  KHSoa+a/2AEjo+o/85mXqpa1crV7Zirb0arKg1UDZFQsczl1BQ88aGNYnPnrd8Hc
-  ee8=
+  cHJpdmF0ZS5jb20wEgYDVR0TAQH/BAgwBgEB/wIBATAdBgNVHQ4EFgQU2QszP8WV
+  Ilk+Lnc6Hko+QgmbW+YwDQYJKoZIhvcNAQELBQADggEBAFSbEk1UqovpqDnNHA83
+  R+U7bG+/cXA3gR3+JTq4G822+MmZDSU0qa8AIdBVdP6VbsDC1eiWhTjRgHIdAPcy
+  GDaAJIqOKa/U0qsNMhrh/xcr7Rz3kqPXK2TtQFec6rwPw+64lQqApk0Af0o8UE5Z
+  PNw3X4YfLOiiBkbZ3Vjwk+u2F6yl2KpMVwzIIG536Gah/z0JvJ6NoocnFU14FYUq
+  DObvuZLhcoNP/BZPPrXTSHaMnY2UcuDFI8KBwIoDtn8a3Db6409cfk4qhgtK/Ijp
+  Ahih92DQSYoNPiBFyB6YOVZIc5j0nZVJZxku5ZpsXG3R3HC6VjF0TFKJTFHPKbeU
+  zTc=
   -----END CERTIFICATE-----
 imageContentSources:
 - mirrors:
