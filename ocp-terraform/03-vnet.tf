@@ -1,4 +1,4 @@
-# Define VNet and Subnets
+# Define VNet
 resource "azurerm_virtual_network" "vnet" {
   name                = "existing_vnet"
   location            = azurerm_resource_group.rg.location
