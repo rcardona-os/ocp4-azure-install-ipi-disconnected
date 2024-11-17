@@ -16,6 +16,11 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "vnet_infra" {
+  description = "Existing VNet that hosts the infras services  for OCP installation"
+  type        = string
+}
+
 variable "private_domain" {
   default     = "ocp-private.com"
   description = "The subscription to use for installation"
