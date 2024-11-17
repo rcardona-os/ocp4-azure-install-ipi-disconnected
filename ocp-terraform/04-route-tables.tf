@@ -22,4 +22,10 @@ resource "azurerm_route_table" "private_route_table" {
     address_prefix         = var.vnet_cidr
     next_hop_type          = "VnetLocal"
   }
+
+  # Allowing access to IP for management.azure.com
+  route {
+    name           = "AllowManagementAzure"
+    address_prefix = var.management_azure_ip  # Replace with actual IP for management.azure.com
+    next_hop_type  = "Internet"
 }

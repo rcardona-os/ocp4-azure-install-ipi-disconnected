@@ -20,6 +20,18 @@ resource "azurerm_network_security_group" "master_nsg" {
 
   # TCP rules
   security_rule {
+    name                        = "AllowAzureManagement"
+    priority                    = 101
+    direction                   = "Outbound"
+    access                      = "Allow"
+    protocol                    = "*"
+    source_port_range           = "*"
+    destination_port_range      = "443"
+    source_address_prefix       = "*"
+    destination_address_prefix  = var.management_azure_ip
+  }
+
+  security_rule {
     name                       = "Allow-TCP-22"
     priority                   = 110
     direction                  = "Inbound"

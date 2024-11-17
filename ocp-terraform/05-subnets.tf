@@ -26,17 +26,22 @@ resource "azurerm_subnet" "worker_subnet" {
 }
 
 # Associate Route Tables with Subnets
-resource "azurerm_subnet_route_table_association" "public_subnet_association" {
+resource "azurerm_subnet_route_table_association" "public_subnet_route_table_association" {
   subnet_id      = azurerm_subnet.public_subnet.id
   route_table_id = azurerm_route_table.public_route_table.id
 }
 
-resource "azurerm_subnet_route_table_association" "master_subnet_association" {
+resource "azurerm_subnet_route_table_association" "master_subnet_route_table_association" {
   subnet_id      = azurerm_subnet.master_subnet.id
   route_table_id = azurerm_route_table.private_route_table.id
 }
 
-resource "azurerm_subnet_route_table_association" "worker_subnet_association" {
+resource "azurerm_subnet_nat_gateway_association" "master_subnet_nat_gateway_association" {
+  subnet_id      = azurerm_subnet.master_subnet.id
+  nat_gateway_id = azurerm_nat_gateway.master_subnet_nat_gateway.id
+}
+
+resource "azurerm_subnet_route_table_association" "worker_subnet_route_table_association" {
   subnet_id      = azurerm_subnet.worker_subnet.id
   route_table_id = azurerm_route_table.private_route_table.id
 }

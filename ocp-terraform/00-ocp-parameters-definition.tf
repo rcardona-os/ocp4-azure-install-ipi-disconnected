@@ -22,6 +22,12 @@ variable "private_domain" {
   type        = string
 }
 
+variable "management_azure_ip" {
+  default     = "ocp-private.com"
+  description = "4.150.240.10/32"
+  type        = string
+}
+
 variable "vnet_cidr" {
   description = "The CIDR block for the Virtual Network"
   type        = string
