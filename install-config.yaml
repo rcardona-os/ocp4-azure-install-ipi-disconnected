@@ -39,9 +39,10 @@ networking:
   - 172.30.0.0/16
 platform:
   azure:
-    baseDomainResourceGroupName: ocp_private_rg
+    baseDomainResourceGroupName: existing_infra_rg
     region: eastus
-    networkResourceGroupName: ocp_private_rg
+    resourceGroupName: ocp_installer_rg
+    networkResourceGroupName: existing_infra_rg
     virtualNetwork: ocp_vnet
     controlPlaneSubnet: master_subnet
     computeSubnet: worker_subnet
