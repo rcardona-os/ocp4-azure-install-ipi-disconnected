@@ -21,8 +21,9 @@ vnet_infra = "existing_infra_vnet"
 # Example: "ocp-private.com" serves as a private DNS domain name for OpenShift.
 private_domain = "ocp-private.com"
 
+💥 IMPORTANT 💥    💥 IMPORTANT 💥    💥 IMPORTANT 💥
 # Represents the management IP address or CIDR range that allows specific administrative access to Azure resources.
-# 💥 IMPORTANT 💥 Check the IP address of management.azure.com in the target region, it changes from region to region
+# Check the IP address of management.azure.com in the target region, it changes from region to region
 # Ensure this IP is from a trusted network or device for secure access.
 management_azure_ip = "4.150.240.10/32"
 
