@@ -23,7 +23,7 @@ private_domain = "ocp-private.com"
 
 💥 IMPORTANT 💥    💥 IMPORTANT 💥    💥 IMPORTANT 💥
 # Represents the management IP address or CIDR range that allows specific administrative access to Azure resources. 
-#Update the IP address of management.azure.com in the target region.
+# Update the IP address of management.azure.com in the target region.
 # Ensure this IP is from a trusted network or device for secure access.
 management_azure_ip = "4.150.240.10/32"
 
