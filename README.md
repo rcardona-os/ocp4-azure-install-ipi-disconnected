@@ -111,7 +111,7 @@ $ ./openshift-install create cluster --dir inst/ --log-level debug > /tmp/instal
 ```bash
 $ tail -f /tmp/installation.log
 
-$ cp inst/auth/kubeconfgig ~/.kube/config
+$ cp inst/auth/kubeconfig ~/.kube/config
 ```
 
 ```bash
