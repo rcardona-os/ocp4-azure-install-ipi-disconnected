@@ -9,33 +9,33 @@ The setup for disconnected or air-gapped mode differs based on how the private m
 
 #### 🔹 Prerequisites
 
-- Azure subscription with needed privileges [INFO](https://docs.openshift.com/container-platform/4.17/installing/installing_azure/installing-azure-account.html#installation-azure-limits_installing-azure-account)
+  - Azure subscription with needed privileges [INFO](https://docs.openshift.com/container-platform/4.17/installing/installing_azure/installing-azure-account.html#installation-azure-limits_installing-azure-account)
 
-- Creates a credentials configuration file called **```osServicePrincipal.json```**, and store it file in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
+  - Creates a credentials configuration file called **```osServicePrincipal.json```**, and store it file in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
 
-ex.
+  ex.
 
-```bash
-$ cat ~/.azure/osServicePrincipal.json  | jq
-{
-  "subscriptionId": "5rf8r9-ard7e-wr354a-asw2-18qwqx564b52b",
-  "clientId": "347e24678-347a-xe131-8233-51234540346c",
-  "clientSecret": "m8wda~0adssdI7ZPijweqTNewewLpTtwdeerbnerc_7",
-  "tenantId": "rew.onmicrosoft.com"
-}
-```
+  ```bash
+  $ cat ~/.azure/osServicePrincipal.json  | jq
+  {
+    "subscriptionId": "5rf8r9-ard7e-wr354a-asw2-18qwqx564b52b",
+    "clientId": "347e24678-347a-xe131-8233-51234540346c",
+    "clientSecret": "m8wda~0adssdI7ZPijweqTNewewLpTtwdeerbnerc_7",
+    "tenantId": "rew.onmicrosoft.com"
+  }
+  ```
 
-- To create a private cluster on Microsoft Azure, you must provide an existing private VNet and subnets to host the cluster. The installation program must also be able to resolve the DNS records that the cluster requires. The installation program configures the Ingress Operator and API server for only internal traffic.
+  - To create a private cluster on Microsoft Azure, you must provide an existing private VNet and subnets to host the cluster. The installation program must also be able to resolve the DNS records that the cluster requires. The installation program configures the Ingress Operator and API server for only internal traffic.
 
-- For an existing existing VNet, the following component should be present:
+  - For an existing existing VNet, the following component should be present:
 
-   ☑️ Subnets
+     ☑️ Subnets
 
-   ☑️ Route tables
+     ☑️ Route tables
 
-   ☑️ VNets
+     ☑️ VNets
 
-   ☑️ Network Security Groups
+     ☑️ Network Security Groups
 
 #### 🔹 Steps
 
