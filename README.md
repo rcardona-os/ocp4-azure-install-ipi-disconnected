@@ -39,7 +39,7 @@ $ cat ~/.azure/osServicePrincipal.json  | jq
 
 #### 🔹 Steps
 
-##### 0. Cloning repo
+- ##### 0. Cloning repo
 ```bash
 $ git clone https://gitlab.com/rcardona/ocp4-azure-install-ipi-disconnected.git
 ```
