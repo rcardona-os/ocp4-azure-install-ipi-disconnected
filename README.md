@@ -130,10 +130,9 @@ f1-tl8tr-worker-eastus2-76smg   Ready    worker                 44h   v1.29.6+ab
 f1-tl8tr-worker-eastus3-h2gg4   Ready    worker                 45h   v1.29.6+aba1e8d
 ````
 
-
+```bash
 $ oc cluster-info
 Kubernetes control plane is running at https://api.f1.ocp-private.com:6443
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-
 ```
