@@ -44,99 +44,99 @@ $ cat ~/.azure/osServicePrincipal.json  | jq
   $ git clone https://gitlab.com/rcardona/ocp4-azure-install-ipi-disconnected.git
   ```
 
-##### 1. Update the terraform variables file
-```bash
-$ cat ocp-terraform/terraform.tfvars
-# Specifies the Azure region where all resources will be deployed.
-# Example: "East US" is one of the Azure-supported regions providing high availability and low latency.
-location = "East US"
+- ##### 1. Update the terraform variables file
+  ```bash
+  $ cat ocp-terraform/terraform.tfvars
+  # Specifies the Azure region where all resources will be deployed.
+  # Example: "East US" is one of the Azure-supported regions providing high availability and low latency.
+  location = "East US"
 
-# The unique identifier for the Azure subscription where the resources will be provisioned.
-# Replace this with your actual Azure subscription ID to ensure the correct subscription is targeted.
-subscription_id = "1343589-af77-423a-a322-181434b5477b"
+  # The unique identifier for the Azure subscription where the resources will be provisioned.
+  # Replace this with your actual Azure subscription ID to ensure the correct subscription is targeted.
+  subscription_id = "1343589-af77-423a-a322-181434b5477b"
 
-# Defines the name of the existing Azure Resource Group where resources will be deployed.
-# Resource groups are used to organize and manage resources within Azure.
-# Example: "existing_infra_rg" refers to an already existing resource group in Azure.
-resource_group_name = "existing_infra_rg"
-.
-.
-.
-.
-```
+  # Defines the name of the existing Azure Resource Group where resources will be deployed.
+  # Resource groups are used to organize and manage resources within Azure.
+  # Example: "existing_infra_rg" refers to an already existing resource group in Azure.
+  resource_group_name = "existing_infra_rg"
+  .
+  .
+  .
+  .
+  ```
 
-###### 2. In case that the "existing" VNet has not been provisioned
-```bash
-$ cd ocp-terraform
+- ###### 2. In case that the "existing" VNet has not been provisioned
+  ```bash
+  $ cd ocp-terraform
 
-$ terraform init
+  $ terraform init
 
-$ terraform plan -out=ocp-infra
+  $ terraform plan -out=ocp-infra
 
-$ terraform apply "ocp-infra"
-```
+  $ terraform apply "ocp-infra"
+  ```
 
-##### 3. Configure the private mirrored registry
+- ##### 3. Configure the private mirrored registry
 
-Taking in account that the VM instance that hosts the registry is provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
+  Taking in account that the VM instance that hosts the registry is provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
 
-##### 4. Update the installer configuration file **```install-config.yaml```**
-```bash
-$ cat example-files/install-config.yaml
-apiVersion: v1
-baseDomain: ocp-private.com
-controlPlane:
-  hyperthreading: Enabled
-  name: master
-  platform:
-    azure:
-      ultraSSDCapability: Enabled
-      osDisk:
-        diskSizeGB: 1024
-        diskType: Premium_LRS
-        .
-        .
-        .
-        .
-```
+- ##### 4. Update the installer configuration file **```install-config.yaml```**
+  ```bash
+  $ cat example-files/install-config.yaml
+  apiVersion: v1
+  baseDomain: ocp-private.com
+  controlPlane:
+    hyperthreading: Enabled
+    name: master
+    platform:
+      azure:
+        ultraSSDCapability: Enabled
+        osDisk:
+          diskSizeGB: 1024
+          diskType: Premium_LRS
+          .
+          .
+          .
+          .
+  ```
 
-##### 5. Deploy Openshift Cluster
-```bash
-$ mkdir inst
+- ##### 5. Deploy Openshift Cluster
+  ```bash
+  $ mkdir inst
 
-$ ./openshift-install create cluster --dir inst/ --log-level debug > /tmp/install.log > /tmp/installation.log 2>&1 &
-```
+  $ ./openshift-install create cluster --dir inst/ --log-level debug > /tmp/install.log > /tmp/installation.log 2>&1 &
+  ```
 
-#### 6. Test cluster deployment
-```bash
-$ tail -f /tmp/installation.log
+- #### 6. Test cluster deployment
+  ```bash
+  $ tail -f /tmp/installation.log
 
-$ cp inst/auth/kubeconfig ~/.kube/config
-```
+  $ cp inst/auth/kubeconfig ~/.kube/config
+  ```
 
-```bash
-$ oc get nodes
-```
+  ```bash
+  $ oc get nodes
+  ```
 
-ex. output
-```text
-$ oc get nodes
-NAME                            STATUS   ROLES                  AGE   VERSION
-f1-tl8tr-master-0               Ready    control-plane,master   45h   v1.29.6+aba1e8d
-f1-tl8tr-master-1               Ready    control-plane,master   45h   v1.29.6+aba1e8d
-f1-tl8tr-master-2               Ready    control-plane,master   45h   v1.29.6+aba1e8d
-f1-tl8tr-worker-eastus1-228hb   Ready    worker                 45h   v1.29.6+aba1e8d
-f1-tl8tr-worker-eastus2-76smg   Ready    worker                 44h   v1.29.6+aba1e8d
-f1-tl8tr-worker-eastus3-h2gg4   Ready    worker                 45h   v1.29.6+aba1e8d
-````
+  ex. output
+  ```text
+  $ oc get nodes
+  NAME                            STATUS   ROLES                  AGE   VERSION
+  f1-tl8tr-master-0               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+  f1-tl8tr-master-1               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+  f1-tl8tr-master-2               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+  f1-tl8tr-worker-eastus1-228hb   Ready    worker                 45h   v1.29.6+aba1e8d
+  f1-tl8tr-worker-eastus2-76smg   Ready    worker                 44h   v1.29.6+aba1e8d
+  f1-tl8tr-worker-eastus3-h2gg4   Ready    worker                 45h   v1.29.6+aba1e8d
+  ````
 
-```bash
-$ oc cluster-info
-```
+  ```bash
+  $ oc cluster-info
+  ```
 
-ex. output
-```text
-Kubernetes control plane is running at https://api.f1.ocp-private.com:6443
+  ex. output
+  ```text
+  Kubernetes control plane is running at https://api.f1.ocp-private.com:6443
 
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-```
+  To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+  ```
