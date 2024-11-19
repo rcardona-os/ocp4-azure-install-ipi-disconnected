@@ -11,7 +11,7 @@ The setup for disconnected or air-gapped mode differs based on how the private m
 
   - Azure subscription with needed privileges [INFO](https://docs.openshift.com/container-platform/4.17/installing/installing_azure/installing-azure-account.html#installation-azure-limits_installing-azure-account)
 
-  - Creates a credentials configuration file called **```osServicePrincipal.json```**, and store it file in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
+  - Create a credentials configuration file called **```osServicePrincipal.json```**, and store it file in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
 
     ```bash
     $ cat ~/.azure/osServicePrincipal.json  | jq
