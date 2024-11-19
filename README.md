@@ -99,3 +99,41 @@ controlPlane:
         .
         .
 ```
+
+##### 5. Deploy Openshift Cluster
+```bash
+$ mkdir inst
+
+$ ./openshift-install create cluster --dir inst/ --log-level debug > /tmp/install.log > /tmp/installation.log 2>&1 &
+```
+
+#### 6. Test cluster deployment
+```bash
+$ tail -f /tmp/installation.log
+
+$ cp inst/auth/kubeconfgig ~/.kube/config
+```
+
+```bash
+$ oc get nodes
+```
+
+ex.
+```text
+$ oc get nodes
+NAME                            STATUS   ROLES                  AGE   VERSION
+f1-tl8tr-master-0               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+f1-tl8tr-master-1               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+f1-tl8tr-master-2               Ready    control-plane,master   45h   v1.29.6+aba1e8d
+f1-tl8tr-worker-eastus1-228hb   Ready    worker                 45h   v1.29.6+aba1e8d
+f1-tl8tr-worker-eastus2-76smg   Ready    worker                 44h   v1.29.6+aba1e8d
+f1-tl8tr-worker-eastus3-h2gg4   Ready    worker                 45h   v1.29.6+aba1e8d
+````
+
+
+$ oc cluster-info
+Kubernetes control plane is running at https://api.f1.ocp-private.com:6443
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+```
