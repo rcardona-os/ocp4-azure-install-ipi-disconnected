@@ -13,8 +13,6 @@ The setup for disconnected or air-gapped mode differs based on how the private m
 
   - Creates a credentials configuration file called **```osServicePrincipal.json```**, and store it file in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
 
-  ex.
-
   ```bash
   $ cat ~/.azure/osServicePrincipal.json  | jq
   {
