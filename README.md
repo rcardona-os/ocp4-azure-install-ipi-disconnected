@@ -1,5 +1,13 @@
 
+## OpenShift v4 IPI Installation in Disconnected/Air-Gapped Mode on Azure
 
+In OpenShift Container Platform version 4.17, a private cluster can be deployed into an existing Azure Virtual Network (VNet) on Microsoft Azure. The installation process automatically provisions the necessary infrastructure, which can be customized further. Customization is achieved by modifying parameters in the install-config.yaml file before initiating the cluster installation.
+
+It is possible to deploy a private OpenShift Container Platform cluster that does not expose any external endpoints. Such clusters are restricted to access from an internal network and remain hidden from the internet.
+
+By default, OpenShift Container Platform is configured to use publicly accessible DNS and endpoints. In the case of a private cluster, the DNS, Ingress Controller, and API server are set to private during deployment, ensuring that the cluster resources are only accessible from within the internal network and are not exposed to the internet.
+
+The setup for disconnected or air-gapped mode differs based on how the private mirror registry is populated. The mirror registry can be configured either by directly accessing the Red Hat repositories over a public connection or by using a mobile USB drive to transfer the required images and content offline. This flexibility allows the cluster to adapt to varying levels of network connectivity and security requirements.
 
 #### 🔹 Prerequisites
 
