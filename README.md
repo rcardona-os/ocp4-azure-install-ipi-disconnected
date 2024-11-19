@@ -36,3 +36,14 @@ $ cat ~/.azure/osServicePrincipal.json  | jq
    ☑️ VNets
 
    ☑️ Network Security Groups
+
+#### 🔹 Steps
+
+##### 1. create the private mirror registry
+
+[PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) 
+
+##### 1. cloning repo
+```bash
+$ git clone https://gitlab.com/rcardona/ocp4-azure-install-ipi-disconnected.git
+```
