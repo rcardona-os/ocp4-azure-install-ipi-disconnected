@@ -80,3 +80,22 @@ $ terraform apply "ocp-infra"
 
 Taking in account that the VM instance that hosts the registry is provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
 
+##### 4. Update the installer configuration file **```install-config.yaml```**
+```bash
+$ cat example-files/install-config.yaml
+apiVersion: v1
+baseDomain: ocp-private.com
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  platform:
+    azure:
+      ultraSSDCapability: Enabled
+      osDisk:
+        diskSizeGB: 1024
+        diskType: Premium_LRS
+        .
+        .
+        .
+        .
+```
