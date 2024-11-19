@@ -65,7 +65,7 @@ resource_group_name = "existing_infra_rg"
 .
 ```
 
-###### 2. In case that the "existing" VNets is not yet provisioned
+###### 2. In case that the "existing" VNet has not been provisioned
 ```bash
 $ cd ocp-terraform
 
@@ -76,7 +76,7 @@ $ terraform plan -out=ocp-infra
 $ terraform apply "ocp-infra"
 ```
 
-##### 3. Configure private mirrored registry
+##### 3. Configure the private mirrored registry
 
 Taking in accoun that this VM instances will be provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
 
