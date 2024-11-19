@@ -76,7 +76,7 @@ $ terraform plan -out=ocp-infra
 $ terraform apply "ocp-infra"
 ```
 
-##### 2. configure private mirrored registry
+##### 3. Configure private mirrored registry
 
 Taking in accoun that this VM instances will be provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
 
