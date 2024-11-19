@@ -9,7 +9,7 @@ The setup for disconnected or [__air-gapped mode__](https://docs.openshift.com/c
 
 #### 🔹 Prerequisites
 
-  - Azure subscription with needed privileges [INFO](https://docs.openshift.com/container-platform/4.17/installing/installing_azure/installing-azure-account.html#installation-azure-limits_installing-azure-account)
+  - Azure subscription with needed privileges [__INFO__](https://docs.openshift.com/container-platform/4.17/installing/installing_azure/installing-azure-account.html#installation-azure-limits_installing-azure-account)
 
   - Create a credentials configuration file called **```osServicePrincipal.json```**, and store it in the **```${HOME}/.azure/```** directory. This ensures that the installation program can load the profile when it is creating an OpenShift Container Platform cluster on the target platform.
 
