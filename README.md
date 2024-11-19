@@ -5,7 +5,7 @@ In OpenShift Container Platform version 4.17, a private cluster can be deployed 
 
 It is possible to deploy a private OpenShift Container Platform cluster that does not expose any external endpoints. Such clusters are restricted to access from an internal network and remain hidden from the internet.
 
-The setup for disconnected or air-gapped mode differs based on how the private mirror registry is populated. The mirror registry can be configured either by directly accessing the Red Hat repositories over a public connection or by using a mobile USB drive to transfer the required images and content offline. This flexibility allows the cluster to adapt to varying levels of network connectivity and security requirements.
+The setup for disconnected or __[air-gapped mode]__(https://docs.openshift.com/container-platform/4.16/installing/installing_with_agent_based_installer/preparing-to-install-with-agent-based-installer.html) differs based on how the private mirror registry is populated. The mirror registry can be configured either by directly accessing the Red Hat repositories over a public connection or by using a mobile USB drive to transfer the required images and content offline. This flexibility allows the cluster to adapt to varying levels of network connectivity and security requirements.
 
 #### 🔹 Prerequisites
 
