@@ -15,3 +15,12 @@ The setup for disconnected or air-gapped mode differs based on how the private m
 
 - To create a private cluster on Microsoft Azure, you must provide an existing private VNet and subnets to host the cluster. The installation program must also be able to resolve the DNS records that the cluster requires. The installation program configures the Ingress Operator and API server for only internal traffic.
 
+- For an existing existing VNet, the following component should be present:
+
+   ☑️ Subnets
+
+   ☑️ Route tables
+
+   ☑️ VNets
+
+   ☑️ Network Security Groups
