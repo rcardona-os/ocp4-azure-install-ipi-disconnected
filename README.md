@@ -107,7 +107,7 @@ The setup for disconnected or air-gapped mode differs based on how the private m
   $ ./openshift-install create cluster --dir inst/ --log-level debug > /tmp/install.log > /tmp/installation.log 2>&1 &
   ```
 
-- #### 6. Test cluster deployment
+- ##### 6. Test cluster deployment
   ```bash
   $ tail -f /tmp/installation.log
 
