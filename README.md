@@ -118,7 +118,7 @@ $ cp inst/auth/kubeconfig ~/.kube/config
 $ oc get nodes
 ```
 
-ex.
+ex. output
 ```text
 $ oc get nodes
 NAME                            STATUS   ROLES                  AGE   VERSION
@@ -134,7 +134,7 @@ f1-tl8tr-worker-eastus3-h2gg4   Ready    worker                 45h   v1.29.6+ab
 $ oc cluster-info
 ```
 
-ex.
+ex. output
 ```text
 Kubernetes control plane is running at https://api.f1.ocp-private.com:6443
 
