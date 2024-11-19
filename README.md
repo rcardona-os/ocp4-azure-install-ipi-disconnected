@@ -39,11 +39,44 @@ $ cat ~/.azure/osServicePrincipal.json  | jq
 
 #### 🔹 Steps
 
-##### 1. create the private mirror registry
-
-[PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) 
-
-##### 1. cloning repo
+##### 0. Cloning repo
 ```bash
 $ git clone https://gitlab.com/rcardona/ocp4-azure-install-ipi-disconnected.git
 ```
+
+##### 1. Update the terraform variables file
+```bash
+$ cat ocp-terraform/terraform.tfvars
+# Specifies the Azure region where all resources will be deployed.
+# Example: "East US" is one of the Azure-supported regions providing high availability and low latency.
+location = "East US"
+
+# The unique identifier for the Azure subscription where the resources will be provisioned.
+# Replace this with your actual Azure subscription ID to ensure the correct subscription is targeted.
+subscription_id = "1343589-af77-423a-a322-181434b5477b"
+
+# Defines the name of the existing Azure Resource Group where resources will be deployed.
+# Resource groups are used to organize and manage resources within Azure.
+# Example: "existing_infra_rg" refers to an already existing resource group in Azure.
+resource_group_name = "existing_infra_rg"
+.
+.
+.
+.
+```
+
+###### 2. In case that the "existing" VNets is not yet provisioned
+```bash
+$ cd ocp-terraform
+
+$ terraform init
+
+$ terraform plan -out=ocp-infra
+
+$ terraform apply "ocp-infra"
+```
+
+##### 2. configure private mirrored registry
+
+Taking in accoun that this VM instances will be provisioned by the terraform plan. This is the [PROCEDURE](https://gitlab.com/rcardona/ocp4-tasks/-/blob/main/cluster-registry/mirror-registry-commons.md) to configure the private mirrored registry.
+
