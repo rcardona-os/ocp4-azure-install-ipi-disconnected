@@ -11,6 +11,12 @@ lsblk
 sudo vgdisplay rootvg
 ```
 
+- create partition
+```bash
+sudo fdisk /dev/sda
+```
+
+
 - create a pv
 ```bash
 sudo pvcreate /dev/sda5 
@@ -35,4 +41,18 @@ sudo xfs_growfs /home
 ```
 ```bash
 sudo xfs_growfs /var
+```
+
+- turning off firewall
+```bash
+sudo systemctl stop firewalld
+```
+```bash
+sudo systemctl disable firewalld
+```
+
+### Azure commands
+- list resources
+```bash
+az resource list --resource-group existing_infra_rg --output table
 ```
