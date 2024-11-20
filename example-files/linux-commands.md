@@ -23,14 +23,16 @@ sudo vgextend rootvg /dev/sda5
 
 - use the lvextend command to increase the size of the rootvg-homelv logical volume
 ```bash
-sudo lvextend -l +100%FREE /dev/rootvg/homelv
+sudo lvextend -L 100G /dev/rootvg/homelv
 ```
-
-- Assuming it is using an ext4 filesystem
 ```bash
-sudo resize2fs /dev/rootvg/homelv
+sudo lvextend -L 100G /dev/rootvg/varlv
 ```
 
 - If the filesystem type is xfs, use the following command to resize it
 ```bash
 sudo xfs_growfs /home
+```
+```bash
+sudo xfs_growfs /var
+```
