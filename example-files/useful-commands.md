@@ -56,3 +56,18 @@ sudo systemctl disable firewalld
 ```bash
 az resource list --resource-group existing_infra_rg --output table
 ```
+
+### OCP installation
+
+```bash
+mkdir inst
+```
+
+```bash
+cp ori.install-config.yaml inst/install-config.yaml
+```
+
+```bash
+./openshift-install create cluster --dir inst --log-level debug > /tmp/install.log 2>&1 &
+```
+
